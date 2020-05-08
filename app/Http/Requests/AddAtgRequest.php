@@ -45,7 +45,7 @@ class AddAtgRequest extends FormRequest
             $validation[$field] = $messages[0];
         }
 
-        if ($this->is('api/*')) {
+        if ($this->is('api/*') && !$this->ajax()) {
             throw new HttpResponseException(response()->json($validation, 422));
         }
 
